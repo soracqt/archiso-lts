@@ -16,6 +16,7 @@ jobs:
         ! [ -d /etc/pacman.d ] && sudo mkdir -p /etc/pacman.d
         [ -f /etc/pacman.d/mirrorlist ] && sudo rm /etc/pacman.d/mirrorlist
         echo 'Server = https://mirror.premi.st/archlinux/$repo/os/$arch'>/tmp/mirrorlist
+        sudo sed -i '/.*SigLevel.*/c\SigLevel=Never' /etc/pacman.conf
         sudo mv /tmp/mirrorlist /etc/pacman.d
         sudo pacman --noconfirm -Syu arch-install-scripts awk dosfstools e2fsprogs erofs-utils findutils gzip libarchive libisoburn mtools openssl pacman sed squashfs-tools
         sudo mkarchiso . o=.
