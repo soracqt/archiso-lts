@@ -13,6 +13,7 @@ jobs:
       run: |
         sudo pacman --noconfirm -S arch-install-scripts awk dosfstools e2fsprogs erofs-utils findutils gzip libarchive libisoburn mtools openssl pacman sed squashfs-tools
         sudo mkarchiso . o=.
+        mv *.iso archiso-lts.iso
     - uses: softprops/action-gh-release@v1
       with:
-        files: *.iso
+        files: archiso-lts.iso
