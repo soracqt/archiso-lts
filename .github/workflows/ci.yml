@@ -14,7 +14,9 @@ jobs:
         sudo pacman-key --init
         sudo pacman-key --populate
         ! [ -d /etc/pacman.d ] && sudo mkdir -p /etc/pacman.d
-        sudo echo 'Server = https://mirror.premi.st/archlinux/$repo/os/$arch'>/etc/pacman.d/mirrorlist
+        [ -f /etc/pacman.d/mirrorlist ] && sudo rm /etc/pacman.d/mirrorlist
+        echo 'Server = https://mirror.premi.st/archlinux/$repo/os/$arch'>/tmp/mirrorlist
+        sudo mv /tmp/mirrorlist /etc/pacman.d
         sudo pacman --noconfirm -Syu arch-install-scripts awk dosfstools e2fsprogs erofs-utils findutils gzip libarchive libisoburn mtools openssl pacman sed squashfs-tools
         sudo mkarchiso . o=.
         mv *.iso archiso-lts.iso
