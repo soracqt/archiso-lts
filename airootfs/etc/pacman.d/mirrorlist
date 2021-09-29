@@ -1,0 +1,22 @@
+ ##
+## Arch Linux repository mirrorlist
+## Filtered by mirror score from mirror status page
+## Generated on 2021-09-29
+##
+
+# South Korea
+Server = https://mirror.anigil.com/archlinux/$repo/os/$arch
+# South Korea
+Server = https://ftp.lanet.kr/pub/archlinux/$repo/os/$arch
+# South Korea
+Server = https://mirror.premi.st/archlinux/$repo/os/$arch
+# South Korea
+Server = http://mirror.premi.st/archlinux/$repo/os/$arch
+# South Korea
+Server = http://ftp.harukasan.org/archlinux/$repo/os/$arch
+# South Korea
+Server = http://mirror.anigil.com/archlinux/$repo/os/$arch
+# South Korea
+Server = https://ftp.harukasan.org/archlinux/$repo/os/$arch
+# South Korea
+Server = http://ftp.lanet.kr/pub/archlinux/$repo/os/$arch
