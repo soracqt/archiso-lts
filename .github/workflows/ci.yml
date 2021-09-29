@@ -11,6 +11,8 @@ jobs:
       run: curl -L https://github.com/sickcodes/github-actions-archlinux/raw/patch-1/install.sh | sh
     - name: mkarchiso
       run: |
+        sudo pacman-key --init
+        sudo pacman-key --populate
         ! [ -d /etc/pacman.d ] && sudo mkdir -p /etc/pacman.d
         sudo echo 'Server = https://mirror.premi.st/archlinux/$repo/os/$arch'>/etc/pacman.d/mirrorlist
         sudo pacman --noconfirm -Syu arch-install-scripts awk dosfstools e2fsprogs erofs-utils findutils gzip libarchive libisoburn mtools openssl pacman sed squashfs-tools
