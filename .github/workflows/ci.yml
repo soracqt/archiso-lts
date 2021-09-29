@@ -1,9 +1,9 @@
-name: CI
+name: Build ArchISO-lts
 
-#on: [push]
+on: [push]
 
 jobs:
-  build:
+  mkarchiso:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -11,7 +11,9 @@ jobs:
       run: curl -L https://github.com/sickcodes/github-actions-archlinux/raw/patch-1/install.sh | sh
     - name: mkarchiso
       run: |
-        sudo pacman --noconfirm -S arch-install-scripts awk dosfstools e2fsprogs erofs-utils findutils gzip libarchive libisoburn mtools openssl pacman sed squashfs-tools
+        ! [ -d /etc/pacman.d ] && sudo mkdir -p /etc/pacman.d
+        sudo echo 'Server = https://mirror.premi.st/archlinux/$repo/os/$arch'>/etc/pacman.d/mirrorlist
+        sudo pacman --noconfirm -Syu arch-install-scripts awk dosfstools e2fsprogs erofs-utils findutils gzip libarchive libisoburn mtools openssl pacman sed squashfs-tools
         sudo mkarchiso . o=.
         mv *.iso archiso-lts.iso
     - uses: softprops/action-gh-release@v1
