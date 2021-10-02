@@ -41,6 +41,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Build my distro
         run: |
+          pacman-key --init
           pacman-key --recv-keys F57D4F59BD3DF454
           pacman-key --lsign-key F57D4F59BD3DF454
           mkarchiso -v -w work -o out . 
